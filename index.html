@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="ATMOS weather intelligence and IoT monitoring dashboard.">
+  <title>ATMOS | Weather Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="ATMOS home">
+        <span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 22.5 15.8 5l11.2 17.5h-6.1l-5.1-8.3-5 8.3z" fill="currentColor"/><circle cx="23.8" cy="9" r="3" fill="#77b8ff"/></svg></span>
+        <span class="brand-name">ATMOS<small>WEATHER INTELLIGENCE</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#overview"><span class="nav-icon">⌂</span> Overview</a>
+        <a class="nav-item" href="#forecast"><span class="nav-icon">◷</span> Forecast</a>
+        <a class="nav-item" href="#sensor-section"><span class="nav-icon">⌁</span> IoT sensors</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="system-card"><span class="system-dot"></span><div><b>System status</b><small id="system-status">Checking connection</small></div></div>
+        
+    </aside>
+
+    <main class="main" id="overview">
+      <header class="topbar">
+        <div class="mobile-brand">ATMOS <span>·</span> WEATHER</div>
+        <div class="page-context"><span class="eyebrow">WEATHER INTELLIGENCE</span><h1>Your weather overview<span>.</span></h1><p>Live conditions and environmental insights for your location.</p></div>
+        <div class="top-actions"><span class="live-pill"><i></i> LIVE DATA</span><div class="avatar" aria-label="ATMOS project">A</div></div>
+      </header>
+
+      <section class="location-row">
+        <div class="location"><span class="location-pin">⌖</span><div><b>Dhaka, Bangladesh</b><small id="updated-at">Fetching latest update…</small></div></div>
+        <span class="source-note"><span class="source-dot"></span> WEATHER BY OPEN-METEO</span>
+      </section>
+
+      <section class="hero-grid">
+        <article class="weather-hero">
+          <div class="hero-top"><span class="eyebrow light">CURRENT CONDITIONS</span><span class="live-tag"><i></i> NOW</span></div>
+          <div class="hero-main">
+            <div class="hero-reading">
+              <div class="weather-temp" id="weather-temp">--<sup>°C</sup></div>
+              <div class="weather-description" id="weather-description">Loading conditions</div>
+              <div class="weather-meta">Feels like <b id="feels-like">--°C</b></div>
+            </div>
+            <div class="weather-art" id="weather-symbol" aria-hidden="true">☁</div>
+          </div>
+          <div class="hero-bottom">
+            <div><span>WIND SPEED</span><b id="wind-speed">-- km/h</b></div>
+            <div><span>HUMIDITY</span><b id="weather-humidity">--%</b></div>
+            <div><span>PRECIPITATION</span><b id="precipitation">-- mm</b></div>
+          </div>
+        </article>
+
+        <article class="conditions-card">
+          <div class="section-head"><div><span class="eyebrow">AT A GLANCE</span><h2>Today's conditions</h2></div><span class="head-mark">✳</span></div>
+          <div class="conditions-grid">
+            <div class="condition-item"><span class="condition-icon sun-icon">☼</span><div><small>UV INDEX</small><b id="uv-index">--</b><em id="uv-label">Daily maximum</em></div></div>
+            <div class="condition-item"><span class="condition-icon pressure-icon">⌁</span><div><small>PRESSURE</small><b id="pressure">-- hPa</b><em>Sea-level pressure</em></div></div>
+            <div class="condition-item"><span class="condition-icon visibility-icon">◉</span><div><small>VISIBILITY</small><b id="visibility">-- km</b><em>Current estimate</em></div></div>
+            <div class="condition-item"><span class="condition-icon rain-icon">⌁</span><div><small>WIND</small><b id="wind-speed-copy">-- km/h</b><em>Current wind speed</em></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block" id="forecast">
+        <div class="section-heading"><div><span class="eyebrow">PLAN AHEAD</span><h2>5-day forecast</h2><p>A quick look at the weather ahead.</p></div><span class="section-aside">NEXT 5 DAYS</span></div>
+        <div class="forecast-card"><div class="forecast-list" id="forecast-list"><div class="loading-row">Loading forecast…</div></div></div>
+      </section>
+
+      <section class="section-block" id="sensor-section">
+        <div class="section-heading sensor-title-row"><div><span class="eyebrow">CONNECTED HARDWARE</span><h2>Local IoT readings</h2><p>Real measurements from your ESP32 and BME280 sensor.</p></div><span class="device-badge" id="device-badge"><i></i> WAITING FOR DEVICE</span></div>
+        <div class="sensor-layout">
+          <div class="sensor-grid">
+            <article class="sensor-card"><div class="sensor-head"><span class="sensor-icon temp-icon">°</span><span class="sensor-label">TEMPERATURE</span><span class="sensor-live" id="temp-live">●</span></div><div class="sensor-value" id="sensor-temp">--<small>°C</small></div><div class="sensor-note">BME280 · Ambient temperature</div></article>
+            <article class="sensor-card"><div class="sensor-head"><span class="sensor-icon humidity-icon">◌</span><span class="sensor-label">HUMIDITY</span><span class="sensor-live" id="humidity-live">●</span></div><div class="sensor-value" id="sensor-humidity">--<small>%</small></div><div class="sensor-note">BME280 · Relative humidity</div></article>
+            <article class="sensor-card"><div class="sensor-head"><span class="sensor-icon pressure-icon">⌁</span><span class="sensor-label">AIR PRESSURE</span><span class="sensor-live" id="pressure-live">●</span></div><div class="sensor-value" id="sensor-pressure">--<small>hPa</small></div><div class="sensor-note">BME280 · Barometric pressure</div></article>
+          </div>
+          <article class="device-card">
+            <div class="device-card-head"><span class="device-symbol">⌁</span><span class="device-mini">ESP32 DEVICE</span><span class="device-status-indicator"></span></div>
+            <h3 id="device-state">Not connected yet</h3>
+            <p id="device-message">Your dashboard is ready. Connect the ESP32 to start receiving sensor readings.</p>
+            <div class="device-footer"><span>LAST RECEIVED</span><b id="last-received">No data received</b></div>
+          </article>
+        </div>
+      </section>
+      <footer><span class="footer-brand">ATMOS</span><span>IoT Weather Reporting System</span><span class="footer-right">Weather: Open-Meteo <i>·</i> Hardware: ESP32 / BME280</span></footer>
+    </main>
+  </div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
